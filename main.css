@@ -19,6 +19,27 @@ body {
   width: inherit;
 }
 
-#computer {}
+#computer {
+  /* transition: transform 100ms; */
+}
 
-#keyboard {}
+#keyboard {
+  /* transition: transform 100ms; */
+}
+
+#card-container {
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 100vh;
+  position: absolute;
+}
+
+.card {
+  height: 100px;
+}
