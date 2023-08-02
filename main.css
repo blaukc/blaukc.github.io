@@ -1,7 +1,8 @@
 body {
-  background-color: black;
+  background-color: #1c1d22;
   height: 1000vh;
   overflow-x: hidden;
+  margin: 0
 }
 
 .profile-assets {
@@ -38,9 +39,56 @@ body {
   margin-left: auto;
   margin-right: auto;
   top: 100vh;
-  position: absolute;
+  position: relative;
 }
 
 .card {
   height: 400px;
+}
+
+#parallax-container {
+  width: 100vw;
+  height: 48vh;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  overflow: hidden;
+}
+
+.parallax {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  background-position: bottom;
+  background-size: contain;
+}
+
+#parallax-1 {
+  background-image: url("/assets/parallax_1.png");
+}
+
+#parallax-2 {
+  background-image: url("/assets/parallax_2.png");
+}
+
+#parallax-3 {
+  background-image: url("/assets/parallax_3.png");
+}
+
+#parallax-4 {
+  background-image: url("/assets/parallax_4.png");
+}
+
+#parallax-5 {
+  background-image: url("/assets/parallax_5.png");
+}
+
+#parallax-6 {
+  background-image: url("/assets/parallax_6.png");
+}
+
+#parallax-7 {
+  background-image: url("/assets/parallax_7.png");
 }
