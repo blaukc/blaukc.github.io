@@ -24,12 +24,12 @@ const computerFinalTop = 40;
 cardContainer.style.top = (splitComputerBreakpoint + 400) + 'px'
 
 const parallaxAnimation = (scrollDistance) => {
-    parallax1.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.7) + 'px, 0px)';
-    parallax2.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.6) + 'px, 0px)';
-    parallax3.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.5) + 'px, 0px)';
-    parallax4.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.4) + 'px, 0px)';
-    parallax5.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.3) + 'px, 0px)';
-    parallax6.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.2) + 'px, 0px)';
+    parallax1.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.9) + 'px, 0px)';
+    parallax2.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.8) + 'px, 0px)';
+    parallax3.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.7) + 'px, 0px)';
+    parallax4.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.6) + 'px, 0px)';
+    parallax5.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.5) + 'px, 0px)';
+    parallax6.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.3) + 'px, 0px)';
     parallax7.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.1) + 'px, 0px)';
 }
 
