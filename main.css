@@ -1,6 +1,7 @@
 body {
   background-color: black;
   height: 1000vh;
+  overflow-x: hidden;
 }
 
 .profile-assets {
@@ -11,7 +12,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   top: 60vh;
-  position: absolute;
+  position: sticky;
 }
 
 .profile-assets img {
@@ -20,11 +21,11 @@ body {
 }
 
 #computer {
-  /* transition: transform 100ms; */
+  transition: transform 200ms ease-out;
 }
 
 #keyboard {
-  /* transition: transform 100ms; */
+  transition: transform 200ms ease-out;
 }
 
 #card-container {
@@ -41,5 +42,5 @@ body {
 }
 
 .card {
-  height: 100px;
+  height: 400px;
 }
