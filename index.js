@@ -63,7 +63,7 @@ const splitComputer = (scrollDistance) => {
 
 }
 
-document.addEventListener("scroll", (evt) => {
+const onUpdate = (evt) => {
     const scrollDistance = window.scrollY;
 
     if (scrollDistance < scrollComputerUpBreakpoint) {
@@ -79,4 +79,8 @@ document.addEventListener("scroll", (evt) => {
         const scale = 1 + (scrollDifference) * computerSizeUpSpeed;
         pauseComputer(scrollDistance, x, scale);
     }
-});
+}
+
+document.addEventListener("scroll", onUpdate);
+
+window.onload = onUpdate(null);
