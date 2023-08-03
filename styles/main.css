@@ -1,0 +1,74 @@
+@font-face {
+  font-family: Gotham;
+  src: url(/fonts/GothamMedium.ttf);
+}
+
+@font-face {
+  font-family: Gotham;
+  font-weight: bold;
+  src: url(/fonts/GothamBold.ttf);
+}
+
+@font-face {
+  font-family: Gotham;
+  font-weight: lighter;
+  src: url(/fonts/GothamLight.ttf);
+}
+
+body {
+  background-color: #1c1d22;
+  overflow-x: hidden;
+  margin: 0
+}
+
+.profile-assets {
+  height: 25vh;
+  width: 25vh;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 60vh;
+  position: sticky;
+}
+
+.profile-assets img {
+  height: inherit;
+  width: inherit;
+}
+
+#computer {
+  transition: transform 200ms ease-out;
+}
+
+#keyboard {
+  transition: transform 200ms ease-out;
+}
+
+#card-container {
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 100vh;
+  position: relative;
+  font-family: Gotham;
+  gap: 50px;
+}
+
+#card-header {
+  color: white;
+}
+
+#card-header h1 {
+  font-weight: bold;
+}
+
+.card {
+  height: 400px;
+  border-radius: 5px;
+  border: 1px white solid;
+}
