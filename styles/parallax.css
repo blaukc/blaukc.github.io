@@ -1,6 +1,6 @@
 #parallax-container {
     width: 100vw;
-    height: 48vh;
+    height: 50vh;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -43,14 +43,10 @@
 
 #parallax-7 {
     background-image: url("/assets/parallax_7.png");
-    height: 49vh;
+    height: 51vh;
 }
 
-@media (max-width: 1024px) {
-    #parallax-container {
-        height: 45vh;
-    }
-
+@media (max-width: 1023px) {
     #parallax-1 {
         background-image: url("/assets/mobile/parallax_1.png");
     }
@@ -77,6 +73,5 @@
 
     #parallax-7 {
         background-image: url("/assets/mobile/parallax_7.png");
-        height: 46vh;
     }
 }

@@ -1,6 +1,7 @@
 // Elements
 const computer = document.getElementById("computer");
 const keyboard = document.getElementById("keyboard");
+const computerSpacer = document.getElementById("computer-spacer");
 const cardContainer = document.getElementById("card-container");
 const parallaxContainer = document.getElementById("parallax-container");
 const parallax1 = document.getElementById("parallax-1");
@@ -12,24 +13,28 @@ const parallax6 = document.getElementById("parallax-6");
 const parallax7 = document.getElementById("parallax-7");
 
 // Constants
-const computerScrollUpSpeed = 0.5;
+const cardContainerWidth = {
+    desktop: 40,
+    tablet: 70,
+    mobile: 90,
+}
+const breakpoints = {
+    // Breakpoints are measured in vh, and assumes that parallax-container and computer-spacer take up total of 75vh
+    scrollComputerUp: 50,
+    pause: 100,
+    splitComputer: 175,
+}
+computerSpacer.style.height = breakpoints.splitComputer + 'vh';
+
+// remove these when possible
 const splitComputerSpeed = 0.55;
 const computerSizeUpSpeed = 0.0003;
-const computerInitialTop = 60;
-const computerFinalTop = 40;
 
 // Global variables
-let viewportWidth = window.innerWidth;
-let viewportHeight = window.innerHeight;
-let scrollComputerUpBreakpoint = 0.5 * viewportHeight;
-let pauseComputerBreakpoint = 0.75 * viewportHeight;
-let splitComputerBreakpoint = 2 * viewportHeight;
-
-// const scrollComputerUpBreakpoint = 500;
-// const pauseComputerBreakpoint = 750;
-// const splitComputerBreakpoint = 2000;
+let viewportWidth, viewportHeight, scrollComputerUpBreakpoint, pauseComputerBreakpoint, splitComputerBreakpoint, isMobile, isTablet, isDesktop;
 
 const parallaxAnimation = (scrollDistance) => {
+    // TODO: make separate slower one for mobile/tablet
     parallax1.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.9) + 'px, 0px)';
     parallax2.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.8) + 'px, 0px)';
     parallax3.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.7) + 'px, 0px)';
@@ -40,7 +45,6 @@ const parallaxAnimation = (scrollDistance) => {
 }
 
 const scrollComputerUp = (scrollDistance) => {
-    // const y = scrollDistance * computerScrollUpSpeed;
     // const top = computerFinalTop + (computerInitialTop - computerFinalTop) * (1 - scrollDistance / scrollComputerUpBreakpoint);
     const top = 20 * scrollDistance / scrollComputerUpBreakpoint;
 
@@ -49,19 +53,30 @@ const scrollComputerUp = (scrollDistance) => {
 }
 
 const pauseComputer = (scrollDistance, x, scale) => {
-    const y = scrollDistance - scrollComputerUpBreakpoint * computerScrollUpSpeed;
-
     computer.style.top = -20 + 'vh';
     keyboard.style.top = -20 + 'vh';
     computer.style.transform = 'translate3d(' + x + 'px, 0px, 0px) scale(' + scale + ')';
     keyboard.style.transform = 'translate3d(' + -x + 'px, 0px, 0px) scale(' + scale + ')';
 }
 
-const splitComputer = (scrollDistance) => {
-    const scrollDifference = scrollDistance - pauseComputerBreakpoint
-    const x = scrollDifference * splitComputerSpeed;
-    const y = scrollDistance - scrollComputerUpBreakpoint * computerScrollUpSpeed;
+const getHorizontalDisplacementAndScale = (scrollDistance) => {
+    let x;
+    const scrollDifference = scrollDistance - pauseComputerBreakpoint;
+    if (isDesktop) {
+        const splitDistanceInViewWidth = (100 - cardContainerWidth.desktop) / 2;
+        const splitDistance = viewportWidth * splitDistanceInViewWidth / 100;
+        x = splitDistance * (scrollDifference) / (splitComputerBreakpoint - pauseComputerBreakpoint)
+    } else if (isTablet) {
+        x = scrollDifference * splitComputerSpeed;
+    } else if (isMobile) {
+        x = scrollDifference * splitComputerSpeed;
+    }
     const scale = 1 + scrollDifference * computerSizeUpSpeed;
+    return [x, scale];
+}
+
+const splitComputer = (scrollDistance) => {
+    const [x, scale] = getHorizontalDisplacementAndScale(scrollDistance);
 
     computer.style.top = -20 + 'vh';
     keyboard.style.top = -20 + 'vh';
@@ -82,13 +97,26 @@ const onUpdate = (evt) => {
     } else if (scrollDistance < splitComputerBreakpoint) {
         splitComputer(scrollDistance);
     } else {
-        const scrollDifference = splitComputerBreakpoint - pauseComputerBreakpoint
-        const x = (scrollDifference) * splitComputerSpeed;
-        const scale = 1 + (scrollDifference) * computerSizeUpSpeed;
+        const [x, scale] = getHorizontalDisplacementAndScale(splitComputerBreakpoint);
         pauseComputer(scrollDistance, x, scale);
     }
 }
 
+const updateState = (evt) => {
+    viewportWidth = window.innerWidth;
+    viewportHeight = window.innerHeight;
+    scrollComputerUpBreakpoint = breakpoints.scrollComputerUp / 100 * viewportHeight;
+    pauseComputerBreakpoint = breakpoints.pause / 100 * viewportHeight;
+    splitComputerBreakpoint = breakpoints.splitComputer / 100 * viewportHeight;
+    isMobile = viewportWidth < 768;
+    isTablet = viewportWidth >= 768 && viewportWidth < 1024;
+    isDesktop = viewportWidth >= 1024;
+    onUpdate(null);
+}
+
+updateState(null);
+
 document.addEventListener("scroll", onUpdate);
+window.addEventListener("resize", updateState);
 
 window.onload = onUpdate(null);
