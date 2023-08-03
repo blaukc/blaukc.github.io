@@ -1,3 +1,4 @@
+// Elements
 const computer = document.getElementById("computer");
 const keyboard = document.getElementById("keyboard");
 const cardContainer = document.getElementById("card-container");
@@ -10,18 +11,23 @@ const parallax5 = document.getElementById("parallax-5");
 const parallax6 = document.getElementById("parallax-6");
 const parallax7 = document.getElementById("parallax-7");
 
-const scrollComputerUpBreakpoint = 500;
-const pauseComputerBreakpoint = 750;
-const splitComputerBreakpoint = 2000;
-
+// Constants
 const computerScrollUpSpeed = 0.5;
 const splitComputerSpeed = 0.55;
 const computerSizeUpSpeed = 0.0003;
-
 const computerInitialTop = 60;
 const computerFinalTop = 40;
 
-cardContainer.style.top = (splitComputerBreakpoint + 400) + 'px'
+// Global variables
+let viewportWidth = window.innerWidth;
+let viewportHeight = window.innerHeight;
+let scrollComputerUpBreakpoint = 0.5 * viewportHeight;
+let pauseComputerBreakpoint = 0.75 * viewportHeight;
+let splitComputerBreakpoint = 2 * viewportHeight;
+
+// const scrollComputerUpBreakpoint = 500;
+// const pauseComputerBreakpoint = 750;
+// const splitComputerBreakpoint = 2000;
 
 const parallaxAnimation = (scrollDistance) => {
     parallax1.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.9) + 'px, 0px)';
@@ -34,18 +40,19 @@ const parallaxAnimation = (scrollDistance) => {
 }
 
 const scrollComputerUp = (scrollDistance) => {
-    const y = scrollDistance * computerScrollUpSpeed;
-    const top = computerFinalTop + (computerInitialTop - computerFinalTop) * (1 - scrollDistance / scrollComputerUpBreakpoint);
+    // const y = scrollDistance * computerScrollUpSpeed;
+    // const top = computerFinalTop + (computerInitialTop - computerFinalTop) * (1 - scrollDistance / scrollComputerUpBreakpoint);
+    const top = 20 * scrollDistance / scrollComputerUpBreakpoint;
 
-    computer.style.top = top + 'vh';
-    keyboard.style.top = top + 'vh';
+    computer.style.top = -top + 'vh';
+    keyboard.style.top = -top + 'vh';
 }
 
 const pauseComputer = (scrollDistance, x, scale) => {
     const y = scrollDistance - scrollComputerUpBreakpoint * computerScrollUpSpeed;
 
-    computer.style.top = computerFinalTop + 'vh';
-    keyboard.style.top = computerFinalTop + 'vh';
+    computer.style.top = -20 + 'vh';
+    keyboard.style.top = -20 + 'vh';
     computer.style.transform = 'translate3d(' + x + 'px, 0px, 0px) scale(' + scale + ')';
     keyboard.style.transform = 'translate3d(' + -x + 'px, 0px, 0px) scale(' + scale + ')';
 }
@@ -56,8 +63,8 @@ const splitComputer = (scrollDistance) => {
     const y = scrollDistance - scrollComputerUpBreakpoint * computerScrollUpSpeed;
     const scale = 1 + scrollDifference * computerSizeUpSpeed;
 
-    computer.style.top = computerFinalTop + 'vh';
-    keyboard.style.top = computerFinalTop + 'vh';
+    computer.style.top = -20 + 'vh';
+    keyboard.style.top = -20 + 'vh';
     computer.style.transform = 'translate3d(' + x + 'px, 0px, 0px) scale(' + scale + ')';
     keyboard.style.transform = 'translate3d(' + -x + 'px, 0px, 0px) scale(' + scale + ')';
 
@@ -65,6 +72,7 @@ const splitComputer = (scrollDistance) => {
 
 const onUpdate = (evt) => {
     const scrollDistance = window.scrollY;
+    // viewportWidth = window.innerWidth
 
     if (scrollDistance < scrollComputerUpBreakpoint) {
         scrollComputerUp(scrollDistance);
