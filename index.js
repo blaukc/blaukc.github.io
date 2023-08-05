@@ -34,14 +34,23 @@ const computerSizeUpSpeed = 0.0003;
 let viewportWidth, viewportHeight, scrollComputerUpBreakpoint, pauseComputerBreakpoint, splitComputerBreakpoint, isMobile, isTablet, isDesktop;
 
 const parallaxAnimation = (scrollDistance) => {
-    // TODO: make separate slower one for mobile/tablet
-    parallax1.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.9) + 'px, 0px)';
-    parallax2.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.8) + 'px, 0px)';
-    parallax3.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.7) + 'px, 0px)';
-    parallax4.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.6) + 'px, 0px)';
-    parallax5.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.5) + 'px, 0px)';
-    parallax6.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.3) + 'px, 0px)';
-    parallax7.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.1) + 'px, 0px)';
+    if (isDesktop) {
+        parallax1.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.9) + 'px, 0px)';
+        parallax2.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.8) + 'px, 0px)';
+        parallax3.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.7) + 'px, 0px)';
+        parallax4.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.6) + 'px, 0px)';
+        parallax5.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.5) + 'px, 0px)';
+        parallax6.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.3) + 'px, 0px)';
+        parallax7.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.1) + 'px, 0px)';
+    } else if (isMobile || isTablet) {
+        parallax1.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.4) + 'px, 0px)';
+        parallax2.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.35) + 'px, 0px)';
+        parallax3.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.3) + 'px, 0px)';
+        parallax4.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.25) + 'px, 0px)';
+        parallax5.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.2) + 'px, 0px)';
+        parallax6.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.15) + 'px, 0px)';
+        parallax7.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.1) + 'px, 0px)';
+    }
 }
 
 const scrollComputerUp = (scrollDistance) => {
