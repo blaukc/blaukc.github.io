@@ -1,0 +1,64 @@
+@font-face {
+  font-family: NeueKabel;
+  font-weight: 400;
+  src: url("/styles/fonts/NeueKabel.otf");
+}
+
+@font-face {
+  font-family: NeueKabel;
+  font-weight: 200;
+  src: url("/styles/fonts/NeueKabel-Thin.otf");
+}
+
+@font-face {
+  font-family: NeueKabel;
+  font-weight: 300;
+  src: url("/styles/fonts/NeueKabel-Light.otf");
+}
+
+@font-face {
+  font-family: NeueKabel;
+  font-weight: 600;
+  src: url("/styles/fonts/NeueKabel-Bold.otf");
+}
+
+@font-face {
+  font-family: NeueKabel;
+  font-weight: 800;
+  src: url("/styles/fonts/NeueKabel-Bold.otf");
+}
+
+@font-face {
+  font-family: NeueKabel;
+  font-weight: 400;
+  font-style: italic;
+  src: url("/styles/fonts/NeueKabel-Italic.otf");
+}
+
+@font-face {
+  font-family: NeueKabel;
+  font-weight: 200;
+  font-style: italic;
+  src: url("/styles/fonts/NeueKabel-ThinItalic.otf");
+}
+
+@font-face {
+  font-family: NeueKabel;
+  font-weight: 300;
+  font-style: italic;
+  src: url("/styles/fonts/NeueKabel-LightItalic.otf");
+}
+
+@font-face {
+  font-family: NeueKabel;
+  font-weight: 600;
+  font-style: italic;
+  src: url("/styles/fonts/NeueKabel-BoldItalic.otf");
+}
+
+@font-face {
+  font-family: NeueKabel;
+  font-weight: 800;
+  font-style: italic;
+  src: url("/styles/fonts/NeueKabel-BlackItalic.otf");
+}

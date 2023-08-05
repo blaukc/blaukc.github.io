@@ -102,7 +102,6 @@ const splitComputer = (scrollDistance) => {
 
 const onUpdate = (evt) => {
     const scrollDistance = window.scrollY;
-    // viewportWidth = window.innerWidth
 
     if (scrollDistance < scrollComputerUpBreakpoint) {
         scrollComputerUp(scrollDistance);

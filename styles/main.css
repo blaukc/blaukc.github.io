@@ -1,20 +1,3 @@
-@font-face {
-  font-family: Gotham;
-  src: url(/fonts/GothamMedium.ttf);
-}
-
-@font-face {
-  font-family: Gotham;
-  font-weight: bold;
-  src: url(/fonts/GothamBold.ttf);
-}
-
-@font-face {
-  font-family: Gotham;
-  font-weight: lighter;
-  src: url(/fonts/GothamLight.ttf);
-}
-
 body {
   background-color: #1c1d22;
   overflow-x: hidden;
@@ -67,7 +50,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  font-family: Gotham;
+  font-family: NeueKabel;
   gap: 50px;
 }
 
@@ -76,7 +59,21 @@ body {
 }
 
 #card-header h1 {
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 4vh;
+  margin: 0px;
+}
+
+#card-header h2 {
+  font-weight: 300;
+  font-size: 5vh;
+  margin: 0px;
+}
+
+#card-header p {
+  font-weight: 400;
+  font-size: 24px;
+  margin: 0px;
 }
 
 .card {
