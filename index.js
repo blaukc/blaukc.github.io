@@ -21,7 +21,7 @@ const cardContainerWidth = {
 const breakpoints = {
     // Breakpoints are measured in vh, and assumes that parallax-container and computer-spacer take up total of 75vh
     scrollComputerUp: 50,
-    pause: 100,
+    pause: 75,
     splitComputer: 175,
 }
 computerSpacer.style.height = breakpoints.splitComputer + 'vh';
@@ -60,18 +60,24 @@ const pauseComputer = (scrollDistance, x, scale) => {
 }
 
 const getHorizontalDisplacementAndScale = (scrollDistance) => {
-    let x;
+    let x, scale;
     const scrollDifference = scrollDistance - pauseComputerBreakpoint;
     if (isDesktop) {
         const splitDistanceInViewWidth = (100 - cardContainerWidth.desktop) / 2;
         const splitDistance = viewportWidth * splitDistanceInViewWidth / 100;
         x = splitDistance * (scrollDifference) / (splitComputerBreakpoint - pauseComputerBreakpoint)
+        scale = 1;
     } else if (isTablet) {
-        x = scrollDifference * splitComputerSpeed;
+        const splitDistanceInViewWidth = 65;
+        const splitDistance = viewportWidth * splitDistanceInViewWidth / 100;
+        x = splitDistance * (scrollDifference) / (splitComputerBreakpoint - pauseComputerBreakpoint)
+        scale = 1;
     } else if (isMobile) {
-        x = scrollDifference * splitComputerSpeed;
+        const splitDistanceInViewWidth = 65;
+        const splitDistance = viewportWidth * splitDistanceInViewWidth / 100;
+        x = splitDistance * (scrollDifference) / (splitComputerBreakpoint - pauseComputerBreakpoint)
+        scale = 1;
     }
-    const scale = 1 + scrollDifference * computerSizeUpSpeed;
     return [x, scale];
 }
 
