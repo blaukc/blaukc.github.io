@@ -110,7 +110,9 @@ const tabletParallaxAnimation = (scrollDistance) => {
 const monitorParallaxAnimation = (scrollDistance) => {
     const scrollDifference = scrollDistance - splitComputerBreakpoint;
     const x = -scrollDifference * 0.1 + 0.15 * viewportHeight;
-    cardWorkClassMonitor.style.transform = 'translate3d(' + x + 'px, 0px, 0px) skew(0deg, ' + scrollDifference * 0.0075 + 'deg)';
+    const deg = scrollDifference * 0.02;
+
+    cardWorkClassMonitor.style.transform = 'translate3d(' + x + 'px, 0px, 0px) rotate3d(0, 1, 0, ' + deg + 'deg)';
 }
 
 const onUpdate = (evt) => {
