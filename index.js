@@ -11,10 +11,12 @@ const parallax4 = document.getElementById("parallax-4");
 const parallax5 = document.getElementById("parallax-5");
 const parallax6 = document.getElementById("parallax-6");
 const parallax7 = document.getElementById("parallax-7");
+const cardCVWOTablet = document.getElementById("card-cvwo-tablet");
+const cardWorkClassMonitor = document.getElementById("card-workclass-monitor");
 
 // Constants
 const cardContainerWidth = {
-    desktop: 40,
+    desktop: 50,
     tablet: 70,
     mobile: 90,
 }
@@ -33,7 +35,7 @@ const computerSizeUpSpeed = 0.0003;
 // Global variables
 let viewportWidth, viewportHeight, scrollComputerUpBreakpoint, pauseComputerBreakpoint, splitComputerBreakpoint, isMobile, isTablet, isDesktop;
 
-const parallaxAnimation = (scrollDistance) => {
+const mountainParallaxAnimation = (scrollDistance) => {
     if (isDesktop) {
         parallax1.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.9) + 'px, 0px)';
         parallax2.style.transform = 'translate3d(0px, ' + (scrollDistance * 0.8) + 'px, 0px)';
@@ -72,7 +74,7 @@ const getHorizontalDisplacementAndScale = (scrollDistance) => {
     let x, scale;
     const scrollDifference = scrollDistance - pauseComputerBreakpoint;
     if (isDesktop) {
-        const splitDistanceInViewWidth = (100 - cardContainerWidth.desktop) / 2;
+        const splitDistanceInViewWidth = 25 + cardContainerWidth.desktop / 4;
         const splitDistance = viewportWidth * splitDistanceInViewWidth / 100;
         x = splitDistance * (scrollDifference) / (splitComputerBreakpoint - pauseComputerBreakpoint)
         scale = 1;
@@ -97,7 +99,18 @@ const splitComputer = (scrollDistance) => {
     keyboard.style.top = -20 + 'vh';
     computer.style.transform = 'translate3d(' + x + 'px, 0px, 0px) scale(' + scale + ')';
     keyboard.style.transform = 'translate3d(' + -x + 'px, 0px, 0px) scale(' + scale + ')';
+}
 
+const tabletParallaxAnimation = (scrollDistance) => {
+    const scrollDifference = scrollDistance - splitComputerBreakpoint;
+    const y = scrollDifference * 0.3 - 0.25 * viewportHeight;
+    cardCVWOTablet.style.transform = 'translate3d(0px, ' + y + 'px, 0px) skew(' + scrollDifference * 0.0075 + 'deg, 0deg)';
+}
+
+const monitorParallaxAnimation = (scrollDistance) => {
+    const scrollDifference = scrollDistance - splitComputerBreakpoint;
+    const x = -scrollDifference * 0.1 + 0.15 * viewportHeight;
+    cardWorkClassMonitor.style.transform = 'translate3d(' + x + 'px, 0px, 0px) skew(0deg, ' + scrollDifference * 0.0075 + 'deg)';
 }
 
 const onUpdate = (evt) => {
@@ -105,7 +118,7 @@ const onUpdate = (evt) => {
 
     if (scrollDistance < scrollComputerUpBreakpoint) {
         scrollComputerUp(scrollDistance);
-        parallaxAnimation(scrollDistance);
+        mountainParallaxAnimation(scrollDistance);
     } else if (scrollDistance < pauseComputerBreakpoint) {
         pauseComputer(scrollDistance, 0, 1);
     } else if (scrollDistance < splitComputerBreakpoint) {
@@ -113,6 +126,8 @@ const onUpdate = (evt) => {
     } else {
         const [x, scale] = getHorizontalDisplacementAndScale(splitComputerBreakpoint);
         pauseComputer(scrollDistance, x, scale);
+        tabletParallaxAnimation(scrollDistance);
+        monitorParallaxAnimation(scrollDistance);
     }
 }
 
