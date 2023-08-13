@@ -96,10 +96,6 @@ body {
   margin: 0px;
 }
 
-#card-container-footer {
-  height: 50vh;
-}
-
 .card {
   position: relative;
   width: inherit;
@@ -187,10 +183,11 @@ body {
   width: 100%;
   display: flex;
   gap: 5%;
+  flex-wrap: wrap;
 }
 
 .card-skills-list img {
-  width: 10%;
+  width: 50px;
 }
 
 .card-parallax {
@@ -242,4 +239,36 @@ body {
   bottom: 0;
   margin: auto 0;
   left: auto;
+}
+
+#card-container-footer {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#card-container-footer h3 {
+  display: inline;
+  font-weight: 300;
+  font-size: 5vh;
+  margin: 0px;
+  color: var(--gradient-7);
+  background-image: linear-gradient(45deg, var(--gradient-4), var(--gradient-8));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+#card-contact {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+#card-contact img {
+  width: 50px;
 }
