@@ -1,6 +1,6 @@
 // Elements
-const computer = document.getElementById("computer");
-const keyboard = document.getElementById("keyboard");
+const computerContainer = document.getElementById("computer-container");
+const keyboardContainer = document.getElementById("keyboard-container");
 const computerSpacer = document.getElementById("computer-spacer");
 const cardContainer = document.getElementById("card-container");
 const parallaxContainer = document.getElementById("parallax-container");
@@ -59,15 +59,15 @@ const scrollComputerUp = (scrollDistance) => {
     // const top = computerFinalTop + (computerInitialTop - computerFinalTop) * (1 - scrollDistance / scrollComputerUpBreakpoint);
     const top = 20 * scrollDistance / scrollComputerUpBreakpoint;
 
-    computer.style.top = -top + 'vh';
-    keyboard.style.top = -top + 'vh';
+    computerContainer.style.top = -top + 'vh';
+    keyboardContainer.style.top = -top + 'vh';
 }
 
 const pauseComputer = (scrollDistance, x, scale) => {
-    computer.style.top = -20 + 'vh';
-    keyboard.style.top = -20 + 'vh';
-    computer.style.transform = 'translate3d(' + x + 'px, 0px, 0px) scale(' + scale + ')';
-    keyboard.style.transform = 'translate3d(' + -x + 'px, 0px, 0px) scale(' + scale + ')';
+    computerContainer.style.top = -20 + 'vh';
+    keyboardContainer.style.top = -20 + 'vh';
+    computerContainer.style.transform = 'translate3d(' + x + 'px, 0px, 0px) scale(' + scale + ')';
+    keyboardContainer.style.transform = 'translate3d(' + -x + 'px, 0px, 0px) scale(' + scale + ')';
 }
 
 const getHorizontalDisplacementAndScale = (scrollDistance) => {
@@ -95,10 +95,10 @@ const getHorizontalDisplacementAndScale = (scrollDistance) => {
 const splitComputer = (scrollDistance) => {
     const [x, scale] = getHorizontalDisplacementAndScale(scrollDistance);
 
-    computer.style.top = -20 + 'vh';
-    keyboard.style.top = -20 + 'vh';
-    computer.style.transform = 'translate3d(' + x + 'px, 0px, 0px) scale(' + scale + ')';
-    keyboard.style.transform = 'translate3d(' + -x + 'px, 0px, 0px) scale(' + scale + ')';
+    computerContainer.style.top = -20 + 'vh';
+    keyboardContainer.style.top = -20 + 'vh';
+    computerContainer.style.transform = 'translate3d(' + x + 'px, 0px, 0px) scale(' + scale + ')';
+    keyboardContainer.style.transform = 'translate3d(' + -x + 'px, 0px, 0px) scale(' + scale + ')';
 }
 
 const tabletParallaxAnimation = (scrollDistance) => {
@@ -151,3 +151,4 @@ document.addEventListener("scroll", onUpdate);
 window.addEventListener("resize", updateState);
 
 window.onload = onUpdate(null);
+

@@ -16,8 +16,33 @@ body {
 }
 
 .profile-assets img {
+  position: absolute;
   height: inherit;
   width: inherit;
+}
+
+.profile-assets a {
+  position: absolute;
+  height: inherit;
+  width: inherit;
+}
+
+#computer_screen_github,
+#computer_screen_linkedin,
+#computer_screen_mail,
+#clickmeagain {
+  display: none;
+}
+
+#keyboard {
+  z-index: 1;
+  cursor: pointer;
+  background-image: url("/assets/keyboard.svg");
+  background-size: contain;
+  height: inherit;
+  width: inherit;
+  position: absolute;
+  pointer-events: painted;
 }
 
 #computer-spacer {
@@ -26,15 +51,15 @@ body {
   position: static;
 }
 
-#computer {
-  transition: transform 200ms ease-out;
-}
-
-#keyboard {
-  transition: transform 200ms ease-out;
-}
-
 #computer-container {
+  transition: transform 200ms ease-out;
+}
+
+#keyboard-container {
+  transition: transform 200ms ease-out;
+}
+
+#profile-asset-container {
   width: 100vw;
   height: 25vh;
   top: 60vh;
