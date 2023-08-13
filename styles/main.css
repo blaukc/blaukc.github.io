@@ -157,6 +157,10 @@ body {
   margin: 0px;
 }
 
+#card-skills {
+  height: 100%;
+}
+
 .card-content-skills {
   height: 100%;
   width: 100%;
@@ -179,13 +183,13 @@ body {
   -moz-text-fill-color: transparent;
 }
 
-.card-skills {
+.card-skills-list {
   width: 100%;
   display: flex;
   gap: 5%;
 }
 
-.card-skills img {
+.card-skills-list img {
   width: 10%;
 }
 
