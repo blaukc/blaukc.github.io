@@ -27,22 +27,40 @@ body {
   width: inherit;
 }
 
-#computer_screen_github,
-#computer_screen_linkedin,
-#computer_screen_mail,
+#computer-screen-github,
+#computer-screen-linkedin,
+#computer-screen-mail,
 #clickmeagain {
+  z-index: 0;
   display: none;
 }
 
-#keyboard {
+#computer-screen-shape {
+  height: inherit;
+  width: inherit;
+  position: absolute;
+  /* cursor: pointer; */
   z-index: 1;
-  cursor: pointer;
+  -webkit-clip-path: polygon(50% 20%, 75% 15%, 75% 40%, 25% 35%);
+  clip-path: polygon(42% 24%, 66% 19%, 64% 50%, 40% 49%);
+}
+
+#keyboard {
   background-image: url("/assets/keyboard.svg");
   background-size: contain;
   height: inherit;
   width: inherit;
   position: absolute;
-  pointer-events: painted;
+}
+
+#keyboard-shape {
+  height: inherit;
+  width: inherit;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  -webkit-clip-path: polygon(21% 63%, 66% 73%, 66% 80%, 50% 89%, 5% 75%, 5% 70%);
+  clip-path: polygon(21% 63%, 66% 73%, 66% 80%, 50% 89%, 5% 75%, 5% 70%);
 }
 
 #computer-spacer {
