@@ -25,6 +25,9 @@ const breakpoints = {
     scrollComputerUp: 50,
     pause: 75,
     splitComputer: 175,
+    foodpanda: 200,
+    cvwo: 230,
+    workclass: 260,
 }
 computerSpacer.style.height = breakpoints.splitComputer + 'vh';
 
@@ -102,13 +105,13 @@ const splitComputer = (scrollDistance) => {
 }
 
 const tabletParallaxAnimation = (scrollDistance) => {
-    const scrollDifference = scrollDistance - splitComputerBreakpoint;
+    const scrollDifference = scrollDistance - cvwoBreakpoint;
     const y = scrollDifference * 0.3 - 0.25 * viewportHeight;
     cardCVWOTablet.style.transform = 'translate3d(0px, ' + y + 'px, 0px) skew(' + scrollDifference * 0.0075 + 'deg, 0deg)';
 }
 
 const monitorParallaxAnimation = (scrollDistance) => {
-    const scrollDifference = scrollDistance - splitComputerBreakpoint;
+    const scrollDifference = scrollDistance - workclassBreakpoint;
     const x = -scrollDifference * 0.1 + 0.15 * viewportHeight;
     const deg = scrollDifference * 0.02;
 
@@ -139,6 +142,9 @@ const updateState = (evt) => {
     scrollComputerUpBreakpoint = breakpoints.scrollComputerUp / 100 * viewportHeight;
     pauseComputerBreakpoint = breakpoints.pause / 100 * viewportHeight;
     splitComputerBreakpoint = breakpoints.splitComputer / 100 * viewportHeight;
+    foodpandaBreakpoint = breakpoints.foodpanda / 100 * viewportHeight;
+    cvwoBreakpoint = breakpoints.cvwo / 100 * viewportHeight;
+    workclassBreakpoint = breakpoints.workclass / 100 * viewportHeight;
     isMobile = viewportWidth < 768;
     isTablet = viewportWidth >= 768 && viewportWidth < 1024;
     isDesktop = viewportWidth >= 1024;
