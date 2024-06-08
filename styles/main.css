@@ -3,6 +3,7 @@ body {
   overflow-x: hidden;
   margin: 0;
   display: block;
+  font-family: NeueKabel;
 }
 
 .profile-assets {
@@ -84,7 +85,9 @@ body {
   position: sticky;
 }
 
-#card-container {
+#intro {}
+
+.card-container {
   width: 50vw;
   display: flex;
   flex-direction: column;
@@ -93,18 +96,18 @@ body {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  font-family: NeueKabel;
   gap: 10vh;
+  margin-bottom: 10vh;
 }
 
 @media (max-width: 767px) {
-  #card-container {
+  .card-container {
     width: 90vw;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  #card-container {
+  .card-container {
     width: 70vw;
   }
 }
