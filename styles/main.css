@@ -85,6 +85,17 @@ body {
   position: sticky;
 }
 
+#navbar {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 100;
+  gap: 5vw;
+  color: var(--gradient-7);
+}
+
 #intro {}
 
 .card-container {

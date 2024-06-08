@@ -3,6 +3,7 @@ const computerContainer = document.getElementById("computer-container");
 const keyboardContainer = document.getElementById("keyboard-container");
 const computerSpacer = document.getElementById("computer-spacer");
 const cardContainer = document.getElementById("card-container");
+const navbar = document.getElementById("navbar");
 const parallaxContainer = document.getElementById("parallax-container");
 const parallax1 = document.getElementById("parallax-1");
 const parallax2 = document.getElementById("parallax-2");
@@ -66,6 +67,24 @@ const scrollComputerUp = (scrollDistance) => {
     keyboardContainer.style.top = -top + 'vh';
 }
 
+const changeNavBarColor = (scrollDistance) => {
+    const gradients = ["--gradient-1", "--gradient-2", "--gradient-3", "--gradient-4", "--gradient-5", "--gradient-6", "--gradient-7", "--gradient-8"];
+    const numIntervals = gradients.length // There are 8 colors from --gradient-1 to --gradient-8;
+    const colorChangeHeightInterval = Math.floor(pauseComputerBreakpoint / numIntervals);
+    const colorIndex = Math.floor(scrollDistance / colorChangeHeightInterval);
+
+    // If valid index:
+    if (colorIndex < numIntervals && colorIndex >= 0) {
+        navbar.style.color = `var(${gradients[colorIndex]})`;
+    }
+
+    // 
+    if (colorIndex >= numIntervals - 1) {
+        navbar.style.background = "linear-gradient(to bottom, var(--gradient-1-rgb-opaque) 70%, var(--gradient-1-rgb-transparent))"
+    } else {
+        navbar.style.background = ""
+    }
+}
 const pauseComputer = (scrollDistance, x, scale) => {
     computerContainer.style.top = -20 + 'vh';
     keyboardContainer.style.top = -20 + 'vh';
@@ -124,10 +143,13 @@ const onUpdate = (evt) => {
     if (scrollDistance < scrollComputerUpBreakpoint) {
         scrollComputerUp(scrollDistance);
         mountainParallaxAnimation(scrollDistance);
+        changeNavBarColor(scrollDistance);
     } else if (scrollDistance < pauseComputerBreakpoint) {
         pauseComputer(scrollDistance, 0, 1);
+        changeNavBarColor(scrollDistance);
     } else if (scrollDistance < splitComputerBreakpoint) {
         splitComputer(scrollDistance);
+        changeNavBarColor(scrollDistance);
     } else {
         const [x, scale] = getHorizontalDisplacementAndScale(splitComputerBreakpoint);
         pauseComputer(scrollDistance, x, scale);

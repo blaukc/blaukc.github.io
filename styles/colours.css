@@ -1,5 +1,7 @@
 :root {
   --gradient-1: #1c1d22;
+  --gradient-1-rgb-opaque: rgba(28, 29, 34, 1);
+  --gradient-1-rgb-transparent: rgba(28, 29, 34, 0);
   --gradient-2: #292933;
   --gradient-3: #383844;
   --gradient-4: #a97c81;
