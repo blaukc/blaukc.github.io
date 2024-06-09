@@ -85,6 +85,22 @@ body {
   position: sticky;
 }
 
+.gradient-text {
+  display: inline;
+  color: var(--gradient-7);
+  background-image: linear-gradient(45deg, var(--gradient-4), var(--gradient-8));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.header-font {
+  font-weight: 300;
+  font-size: 5vh;
+}
+
 #navbar {
   position: fixed;
   display: flex;
@@ -96,7 +112,13 @@ body {
   color: var(--gradient-7);
 }
 
+#navbar p {
+  cursor: pointer;
+}
+
 #intro {}
+
+#experience-header {}
 
 .card-container {
   width: 50vw;
@@ -123,31 +145,20 @@ body {
   }
 }
 
-#card-container-header {
+.card-container-header {
   color: white;
+  margin-bottom: -5vh;
 }
 
-#card-container-header h1 {
+.card-container-header h1 {
   font-weight: 600;
   font-size: 3.5vh;
   margin: 0px;
 }
 
-#card-container-header h2 {
-  display: inline;
-  font-weight: 300;
-  font-size: 5vh;
-  margin: 0px;
-  color: var(--gradient-7);
-  background-image: linear-gradient(45deg, var(--gradient-4), var(--gradient-8));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
+.card-container-header h2 {}
 
-#card-container-header p {
+.card-container-header p {
   font-weight: 400;
   font-size: 24px;
   margin: 0px;
@@ -298,14 +309,14 @@ body {
   left: auto;
 }
 
-#card-container-footer {
+.card-container-footer {
   height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#card-container-footer h3 {
+.card-container-footer h3 {
   display: inline;
   font-weight: 300;
   font-size: 5vh;
@@ -319,13 +330,13 @@ body {
   -moz-text-fill-color: transparent;
 }
 
-#card-contact {
+.card-contact {
   display: flex;
   gap: 50px;
   justify-content: center;
   margin-top: 25px;
 }
 
-#card-contact img {
+.card-contact img {
   width: 50px;
 }

@@ -78,7 +78,7 @@ const changeNavBarColor = (scrollDistance) => {
         navbar.style.color = `var(${gradients[colorIndex]})`;
     }
 
-    // 
+    // Set the background to a gradient once on gradient 8
     if (colorIndex >= numIntervals - 1) {
         navbar.style.background = "linear-gradient(to bottom, var(--gradient-1-rgb-opaque) 70%, var(--gradient-1-rgb-transparent))"
     } else {
@@ -140,16 +140,16 @@ const monitorParallaxAnimation = (scrollDistance) => {
 const onUpdate = (evt) => {
     const scrollDistance = window.scrollY;
 
+    // We want this to always update
+    changeNavBarColor(scrollDistance);
+
     if (scrollDistance < scrollComputerUpBreakpoint) {
         scrollComputerUp(scrollDistance);
         mountainParallaxAnimation(scrollDistance);
-        changeNavBarColor(scrollDistance);
     } else if (scrollDistance < pauseComputerBreakpoint) {
         pauseComputer(scrollDistance, 0, 1);
-        changeNavBarColor(scrollDistance);
     } else if (scrollDistance < splitComputerBreakpoint) {
         splitComputer(scrollDistance);
-        changeNavBarColor(scrollDistance);
     } else {
         const [x, scale] = getHorizontalDisplacementAndScale(splitComputerBreakpoint);
         pauseComputer(scrollDistance, x, scale);
