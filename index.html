@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="styles/fonts.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/parallax.css">
+  <link rel="stylesheet" href="styles/carousel.css">
 </head>
 
 <body>
@@ -70,7 +71,7 @@
   </div>
 
   <div id="experience" class="card-container">
-    <h2 id="experience-header" class="card-container-header gradient-text header-font">Experience</h2>
+    <h2 id="experience-header" class="card-container-header gradient-text header-font text-center">Experience</h2>
     <div class="card">
       <div class="card-content">
         <h4>Backend Software Engineer Intern</h4>
@@ -114,7 +115,7 @@
   </div>
 
   <div id="skills" class="card-container">
-    <h2 id="skills-header" class="card-container-header gradient-text header-font">Skills</h2>
+    <h2 id="skills-header" class="card-container-header gradient-text header-font text-center">Skills</h2>
     <div id="card-skills" class="card">
       <div class="card-content-skills">
         <p>Langauges</p>
@@ -141,7 +142,31 @@
   </div>
 
   <div id="certifications" class="card-container">
-    <h2 id="certifications-header" class="card-container-header gradient-text header-font">Certifications</h2>
+    <h2 id="certifications-header" class="card-container-header gradient-text header-font text-center">Certifications
+    </h2>
+    <div class="carousel-container">
+      <div class="carousel-items">
+        <div class="carousel-item carousel-active">
+          <img src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg">
+        </div>
+        <div class="carousel-item carousel-next">
+          <img src="http://via.placeholder.com/500x500">
+        </div>
+        <div class="carousel-item">
+          <img src="http://via.placeholder.com/500x500">
+        </div>
+        <!-- <div class="carousel-item">
+          <img src="http://via.placeholder.com/500x500">
+        </div> -->
+        <div class="carousel-item carousel-prev">
+          <img src="http://via.placeholder.com/500x500">
+        </div>
+        <div class="carousel-button-container">
+          <div class="carousel-button"><i class="fas fa-angle-left"></i></div>
+          <div class="carousel-button"><i class="fas fa-angle-right"></i></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div id="contact" class="card-container-footer">
@@ -161,6 +186,7 @@
   <script src="index.js"></script>
   <script src="computer.js"></script>
   <script src="navbar.js"></script>
+  <script src="carousel.js"></script>
 </body>
 
 </html>
