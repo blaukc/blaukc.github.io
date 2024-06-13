@@ -21,7 +21,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
+    width: 350px;
     height: 100%;
     overflow: hidden;
     transition: all 300ms ease-in-out;
@@ -31,9 +31,13 @@ body {
     border: 1px white solid;
     overflow: hidden;
     color: white;
-    padding: 5%;
+    padding: 30px;
     box-sizing: border-box;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    cursor: pointer;
 }
 
 .carousel-item img {
@@ -42,19 +46,19 @@ body {
     object-fit: cover;
 }
 
-.carousel-item.carousel-active {
+#carousel-active {
     opacity: 1;
     z-index: 99;
     box-shadow: 0px 0px 105px -35px rgba(0, 0, 0, 0.75);
 }
 
-.carousel-item.carousel-prev {
+#carousel-prev {
     z-index: 2;
     opacity: 0.25;
     transform: translate(-125%, -50%);
 }
 
-.carousel-item.carousel-next {
+#carousel-next {
     z-index: 2;
     opacity: 0.25;
     transform: translate(25%, -50%);
@@ -101,4 +105,45 @@ body {
 
 .carousel-button-container .carousel-button:nth-child(2) {
     float: right;
+}
+
+.carousel-item-content {
+    height: 100%;
+    width: 60%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.carousel-item-content h4 {
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0px;
+}
+
+.carousel-item-content h3 {
+    display: inline;
+    font-weight: 300;
+    font-size: 36px;
+    margin: 0px;
+    color: var(--gradient-7);
+    background-image: linear-gradient(45deg, var(--gradient-4), var(--gradient-8));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+.carousel-item-content p {
+    font-weight: 400;
+    font-size: 18px;
+    margin: 0px;
+}
+
+.carousel-item img {
+    height: 100px;
+    width: 100px;
 }
