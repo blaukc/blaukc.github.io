@@ -9,7 +9,7 @@ const whoami = document.getElementById("intro");
 const experience = document.getElementById("experience-header");
 const skills = document.getElementById("skills-header");
 const certifications = document.getElementById("certifications-header");
-const contactme = document.getElementById("contact-header");
+const contactme = document.getElementById("contact");
 
 
 whoamiNavbar.addEventListener("click", () => whoami.scrollIntoView({ behavior: "smooth", block: "center" }));
