@@ -225,41 +225,32 @@ body {
   margin: 0px;
 }
 
-#card-skills {
-  height: 100%;
+#skills {
+  gap: 5vh;
+  align-items: center;
 }
 
-.card-content-skills {
-  height: 100%;
-  width: 100%;
+#skills-header {
+  margin-bottom: 0;
+}
+
+.skills-card {
+  width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
-.card-content-skills p {
-  display: inline;
+.skills-card h3 {
+  font-size: 36px;
+  margin: 0;
+}
+
+.skills-card h4 {
+  color: var(--gradient-8);
   font-weight: 300;
-  font-size: 5vh;
-  margin: 0px;
-  color: var(--gradient-7);
-  background-image: linear-gradient(45deg, var(--gradient-4), var(--gradient-8));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-
-.card-skills-list {
-  width: 100%;
-  display: flex;
-  gap: 5%;
-  flex-wrap: wrap;
-}
-
-.card-skills-list img {
-  width: 50px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 20px;
 }
 
 .card-parallax {
