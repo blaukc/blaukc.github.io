@@ -29,9 +29,15 @@ const gotoNum = number => {
         prev = numSlides - 1;
     }
 
+
     slides[current].id = activeId;
     slides[prev].id = prevId;
     slides[next].id = nextId;
+
+    setTimeout(() => {
+        window.scrollBy(0, 1);
+        window.scrollBy(0, -1);
+    }, 300)
 }
 
 const gotoPrev = () => current > 0 ? gotoNum(current - 1) : gotoNum(slides.length - 1);
@@ -49,6 +55,8 @@ const handleCarouselClick = (e) => {
         gotoPrev();
     } else if (target.id === nextId) {
         gotoNext();
+    } else if (target.id === activeId) {
+        window.open(target.dataset.url);
     }
 }
 

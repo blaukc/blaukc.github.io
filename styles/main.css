@@ -1,5 +1,5 @@
 body {
-  background-color: #1c1d22;
+  background-color: var(--gradient-1);
   overflow-x: hidden;
   margin: 0;
   display: block;

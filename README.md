@@ -7,7 +7,7 @@ Inspired by [Recap After Use](https://www.recapafteruse.co.uk)
 - [x] Add navbar
 - [x] Make navbar responsive
 - [x] Add sections for experience, skills, certifications, projects
-- [ ] Update certification section
+- [x] Update certification section
 - [ ] Update foodpanda section
 - [ ] Update skills section to match resume
 - [ ] Make page responsive
