@@ -278,7 +278,7 @@ body {
   margin-right: auto;
 }
 
-#card-cvwo-tablet {
+#card-workclass-tablet {
   height: 100%;
   width: 80%;
   top: auto;
@@ -287,7 +287,8 @@ body {
   right: 0;
 }
 
-#card-workclass-monitor {
+#card-cvwo-monitor,
+#card-foodpanda-server {
   height: 100%;
   width: 80%;
   top: 0;
@@ -297,7 +298,8 @@ body {
   right: 0;
 }
 
-#card-workclass-monitor img {
+#card-cvwo-monitor img,
+#card-foodpanda-server img {
   top: 0;
   bottom: 0;
   margin: auto 0;

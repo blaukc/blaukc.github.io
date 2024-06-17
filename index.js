@@ -12,8 +12,9 @@ const parallax4 = document.getElementById("parallax-4");
 const parallax5 = document.getElementById("parallax-5");
 const parallax6 = document.getElementById("parallax-6");
 const parallax7 = document.getElementById("parallax-7");
-const cardCVWOTablet = document.getElementById("card-cvwo-tablet");
-const cardWorkClassMonitor = document.getElementById("card-workclass-monitor");
+const cardWorkClassTablet = document.getElementById("card-workclass-tablet");
+const cardCVWOMonitor = document.getElementById("card-cvwo-monitor");
+const cardFoodpandaServer = document.getElementById("card-foodpanda-server");
 
 // Constants
 const cardContainerWidth = {
@@ -37,7 +38,8 @@ const splitComputerSpeed = 0.55;
 const computerSizeUpSpeed = 0.0003;
 
 // Global variables
-let viewportWidth, viewportHeight, scrollComputerUpBreakpoint, pauseComputerBreakpoint, splitComputerBreakpoint, isMobile, isTablet, isDesktop;
+let viewportWidth, viewportHeight, scrollComputerUpBreakpoint, pauseComputerBreakpoint, splitComputerBreakpoint,
+    foodpandaBreakpoint, cvwoBreakpoint, workclassBreakpoint, isMobile, isTablet, isDesktop;
 
 const mountainParallaxAnimation = (scrollDistance) => {
     if (isDesktop) {
@@ -124,17 +126,26 @@ const splitComputer = (scrollDistance) => {
 }
 
 const tabletParallaxAnimation = (scrollDistance) => {
-    const scrollDifference = scrollDistance - cvwoBreakpoint;
-    const y = scrollDifference * 0.3 - 0.25 * viewportHeight;
-    cardCVWOTablet.style.transform = 'translate3d(0px, ' + y + 'px, 0px) skew(' + scrollDifference * 0.0075 + 'deg, 0deg)';
+    const scrollDifference = scrollDistance - workclassBreakpoint;
+    const y = scrollDifference * 0.2 - 0.25 * viewportHeight;
+    cardWorkClassTablet.style.transform = 'translate3d(0px, ' + y + 'px, 0px) skew(' + scrollDifference * 0.0075 + 'deg, 0deg)';
 }
 
 const monitorParallaxAnimation = (scrollDistance) => {
-    const scrollDifference = scrollDistance - workclassBreakpoint;
-    const x = -scrollDifference * 0.1 + 0.15 * viewportHeight;
+    const scrollDifference = scrollDistance - cvwoBreakpoint;
+    const x = -scrollDifference * 0.125 + 0.15 * viewportHeight;
     const deg = scrollDifference * 0.02;
 
-    cardWorkClassMonitor.style.transform = 'translate3d(' + x + 'px, 0px, 0px) rotate3d(0, 1, 0, ' + deg + 'deg)';
+    cardCVWOMonitor.style.transform = 'translate3d(' + x + 'px, 0px, 0px) rotate3d(0, 1, 0, ' + deg + 'deg)';
+}
+
+const serverParallaxAnimation = (scrollDistance) => {
+    const scrollDifference = scrollDistance - foodpandaBreakpoint;
+    const vhToMax = 75;
+    const pixelsToMax = vhToMax / 100 * viewportHeight;
+    const scale = Math.min(scrollDifference / pixelsToMax, 1);
+
+    cardFoodpandaServer.style.transform = 'scale(' + scale + ')';
 }
 
 const onUpdate = (evt) => {
@@ -155,6 +166,7 @@ const onUpdate = (evt) => {
         pauseComputer(scrollDistance, x, scale);
         tabletParallaxAnimation(scrollDistance);
         monitorParallaxAnimation(scrollDistance);
+        serverParallaxAnimation(scrollDistance);
     }
 }
 
