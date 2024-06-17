@@ -15,6 +15,9 @@ const parallax7 = document.getElementById("parallax-7");
 const cardWorkClassTablet = document.getElementById("card-workclass-tablet");
 const cardCVWOMonitor = document.getElementById("card-cvwo-monitor");
 const cardFoodpandaServer = document.getElementById("card-foodpanda-server");
+const languagesSkillCard = document.getElementById("languages-skills-card");
+const frameworksSkillCard = document.getElementById("frameworks-skills-card");
+const toolsSkillCard = document.getElementById("tools-skills-card");
 
 // Constants
 const cardContainerWidth = {
@@ -30,6 +33,7 @@ const breakpoints = {
     foodpanda: 200,
     cvwo: 230,
     workclass: 260,
+    skills: 400,
 }
 computerSpacer.style.height = breakpoints.splitComputer + 'vh';
 
@@ -39,7 +43,7 @@ const computerSizeUpSpeed = 0.0003;
 
 // Global variables
 let viewportWidth, viewportHeight, scrollComputerUpBreakpoint, pauseComputerBreakpoint, splitComputerBreakpoint,
-    foodpandaBreakpoint, cvwoBreakpoint, workclassBreakpoint, isMobile, isTablet, isDesktop;
+    foodpandaBreakpoint, cvwoBreakpoint, workclassBreakpoint, skillsBreakpoint, isMobile, isTablet, isDesktop;
 
 const mountainParallaxAnimation = (scrollDistance) => {
     if (isDesktop) {
@@ -148,6 +152,39 @@ const serverParallaxAnimation = (scrollDistance) => {
     cardFoodpandaServer.style.transform = 'scale(' + scale + ')';
 }
 
+const skillsAnimation = (scrollDistance) => {
+    const scrollDifference = scrollDistance - skillsBreakpoint;
+    const skillsBreakpointGap = 40
+    const languagesBreakpoint = skillsBreakpointGap / 100 * viewportHeight;
+    const frameworksBreakpoint = skillsBreakpointGap * 2 / 100 * viewportHeight;
+    const toolsBreakpoint = skillsBreakpointGap * 3 / 100 * viewportHeight;
+    let languagesBreakpointOpacity, frameworksBreakpointOpacity, toolsBreakpointOpacity;
+    languagesBreakpointOpacity = Math.min(scrollDifference / languagesBreakpoint, 1);
+    frameworksBreakpointOpacity = Math.min(scrollDifference / frameworksBreakpoint, 1);
+    toolsBreakpointOpacity = Math.min(scrollDifference / toolsBreakpoint, 1);
+    // if (scrollDifference < languagesBreakpoint) {
+    //     languagesBreakpointOpacity = Math.min(scrollDifference / skillsBreakpointGap, 1);
+    //     frameworksBreakpointOpacity = 0;
+    //     toolsBreakpointOpacity = 0;
+    // } else if (scrollDifference < frameworksBreakpoint) {
+    //     languagesBreakpointOpacity = 1
+    //     frameworksBreakpointOpacity = Math.min((scrollDifference - languagesBreakpoint) / skillsBreakpointGap, 1);
+    //     toolsBreakpointOpacity = 0;
+    // } else if (scrollDifference < toolsBreakpoint) {
+    //     languagesBreakpointOpacity = 1
+    //     frameworksBreakpointOpacity = 1
+    //     toolsBreakpointOpacity = Math.min((scrollDifference - frameworksBreakpoint) / skillsBreakpointGap, 1);
+    // } else {
+    //     languagesBreakpointOpacity = 1
+    //     frameworksBreakpointOpacity = 1
+    //     toolsBreakpointOpacity = 1;
+    // }
+
+    languagesSkillCard.style.opacity = languagesBreakpointOpacity;
+    frameworksSkillCard.style.opacity = frameworksBreakpointOpacity;
+    toolsSkillCard.style.opacity = toolsBreakpointOpacity;
+}
+
 const onUpdate = (evt) => {
     const scrollDistance = window.scrollY;
 
@@ -167,6 +204,7 @@ const onUpdate = (evt) => {
         tabletParallaxAnimation(scrollDistance);
         monitorParallaxAnimation(scrollDistance);
         serverParallaxAnimation(scrollDistance);
+        skillsAnimation(scrollDistance);
     }
 }
 
@@ -179,6 +217,7 @@ const updateState = (evt) => {
     foodpandaBreakpoint = breakpoints.foodpanda / 100 * viewportHeight;
     cvwoBreakpoint = breakpoints.cvwo / 100 * viewportHeight;
     workclassBreakpoint = breakpoints.workclass / 100 * viewportHeight;
+    skillsBreakpoint = breakpoints.skills / 100 * viewportHeight;
     isMobile = viewportWidth < 768;
     isTablet = viewportWidth >= 768 && viewportWidth < 1024;
     isDesktop = viewportWidth >= 1024;
