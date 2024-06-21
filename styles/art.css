@@ -1,0 +1,40 @@
+body {
+    background-color: var(--gradient-7);
+    overflow-x: hidden;
+    margin: 0;
+    display: block;
+    font-family: NeueKabel;
+}
+
+#navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+#navbar h2 {
+    cursor: pointer;
+}
+
+#navbar h2:first-child {
+    text-decoration: underline;
+}
+
+
+.portfolio-content {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    display: none;
+}
+
+#videography {
+    display: flex;
+}
+
+.portfolio-content-video {
+    text-align: center;
+}
