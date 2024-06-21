@@ -10,7 +10,8 @@ Inspired by [Recap After Use](https://www.recapafteruse.co.uk)
 - [x] Update certification section
 - [x] Update foodpanda section
 - [x] Update skills section to match resume
-- [ ] Make skills section scroll animation
+- [x] Fix contact me buttons not working
+- [ ] Make skills section scroll animation nicer (?)
 - [ ] Make page responsive
 - [ ] Add better hover animation for computer
 - [ ] Add hover animation for cards

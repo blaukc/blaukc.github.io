@@ -14,6 +14,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   position: absolute;
+  pointer-events: all;
 }
 
 .profile-assets img {
@@ -52,6 +53,7 @@ body {
   height: inherit;
   width: inherit;
   position: absolute;
+  z-index: 0;
 }
 
 #keyboard-shape {
@@ -83,6 +85,7 @@ body {
   height: 25vh;
   top: 60vh;
   position: sticky;
+  pointer-events: none;
 }
 
 .gradient-text {

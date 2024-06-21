@@ -94,15 +94,15 @@ const changeNavBarColor = (scrollDistance) => {
 const pauseComputer = (scrollDistance, x, scale) => {
     computerContainer.style.top = -20 + 'vh';
     keyboardContainer.style.top = -20 + 'vh';
-    computerContainer.style.transform = 'translate3d(' + x + 'px, 0px, 0px) scale(' + scale + ')';
-    keyboardContainer.style.transform = 'translate3d(' + -x + 'px, 0px, 0px) scale(' + scale + ')';
+    computerContainer.style.left = x + 'px';
+    keyboardContainer.style.right = x + 'px';
 }
 
 const getHorizontalDisplacementAndScale = (scrollDistance) => {
     let x, scale;
     const scrollDifference = scrollDistance - pauseComputerBreakpoint;
     if (isDesktop) {
-        const splitDistanceInViewWidth = 25 + cardContainerWidth.desktop / 4;
+        const splitDistanceInViewWidth = 70;
         const splitDistance = viewportWidth * splitDistanceInViewWidth / 100;
         x = splitDistance * (scrollDifference) / (splitComputerBreakpoint - pauseComputerBreakpoint)
         scale = 1;
@@ -125,8 +125,8 @@ const splitComputer = (scrollDistance) => {
 
     computerContainer.style.top = -20 + 'vh';
     keyboardContainer.style.top = -20 + 'vh';
-    computerContainer.style.transform = 'translate3d(' + x + 'px, 0px, 0px) scale(' + scale + ')';
-    keyboardContainer.style.transform = 'translate3d(' + -x + 'px, 0px, 0px) scale(' + scale + ')';
+    computerContainer.style.left = x + 'px';
+    keyboardContainer.style.right = x + 'px';
 }
 
 const tabletParallaxAnimation = (scrollDistance) => {
@@ -162,23 +162,6 @@ const skillsAnimation = (scrollDistance) => {
     languagesBreakpointOpacity = Math.min(scrollDifference / languagesBreakpoint, 1);
     frameworksBreakpointOpacity = Math.min(scrollDifference / frameworksBreakpoint, 1);
     toolsBreakpointOpacity = Math.min(scrollDifference / toolsBreakpoint, 1);
-    // if (scrollDifference < languagesBreakpoint) {
-    //     languagesBreakpointOpacity = Math.min(scrollDifference / skillsBreakpointGap, 1);
-    //     frameworksBreakpointOpacity = 0;
-    //     toolsBreakpointOpacity = 0;
-    // } else if (scrollDifference < frameworksBreakpoint) {
-    //     languagesBreakpointOpacity = 1
-    //     frameworksBreakpointOpacity = Math.min((scrollDifference - languagesBreakpoint) / skillsBreakpointGap, 1);
-    //     toolsBreakpointOpacity = 0;
-    // } else if (scrollDifference < toolsBreakpoint) {
-    //     languagesBreakpointOpacity = 1
-    //     frameworksBreakpointOpacity = 1
-    //     toolsBreakpointOpacity = Math.min((scrollDifference - frameworksBreakpoint) / skillsBreakpointGap, 1);
-    // } else {
-    //     languagesBreakpointOpacity = 1
-    //     frameworksBreakpointOpacity = 1
-    //     toolsBreakpointOpacity = 1;
-    // }
 
     languagesSkillCard.style.opacity = languagesBreakpointOpacity;
     frameworksSkillCard.style.opacity = frameworksBreakpointOpacity;
