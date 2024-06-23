@@ -30,10 +30,10 @@ const breakpoints = {
     scrollComputerUp: 50,
     pause: 75,
     splitComputer: 175,
-    foodpanda: 200,
-    cvwo: 230,
-    workclass: 260,
-    skills: 400,
+    foodpanda: 250,
+    cvwo: 310,
+    workclass: 370,
+    skills: 410,
 }
 computerSpacer.style.height = breakpoints.splitComputer + 'vh';
 
@@ -95,7 +95,7 @@ const pauseComputer = (scrollDistance, x, scale) => {
     computerContainer.style.top = -20 + 'vh';
     keyboardContainer.style.top = -20 + 'vh';
     computerContainer.style.left = x + 'px';
-    keyboardContainer.style.right = x + 'px';
+    keyboardContainer.style.transform = 'translate(' + -x * 0.5 + 'px, 0px) scale(' + scale + ')';
 }
 
 const getHorizontalDisplacementAndScale = (scrollDistance) => {
@@ -107,12 +107,12 @@ const getHorizontalDisplacementAndScale = (scrollDistance) => {
         x = splitDistance * (scrollDifference) / (splitComputerBreakpoint - pauseComputerBreakpoint)
         scale = 1;
     } else if (isTablet) {
-        const splitDistanceInViewWidth = 65;
+        const splitDistanceInViewWidth = 120;
         const splitDistance = viewportWidth * splitDistanceInViewWidth / 100;
         x = splitDistance * (scrollDifference) / (splitComputerBreakpoint - pauseComputerBreakpoint)
         scale = 1;
     } else if (isMobile) {
-        const splitDistanceInViewWidth = 65;
+        const splitDistanceInViewWidth = 130;
         const splitDistance = viewportWidth * splitDistanceInViewWidth / 100;
         x = splitDistance * (scrollDifference) / (splitComputerBreakpoint - pauseComputerBreakpoint)
         scale = 1;
@@ -125,36 +125,64 @@ const splitComputer = (scrollDistance) => {
 
     computerContainer.style.top = -20 + 'vh';
     keyboardContainer.style.top = -20 + 'vh';
+
+    // we use different methods of shifting because:
+    // if we shift computer using transform, it messes up the z-index positioning
+    // if we shift keyboard using left/right it cant overflow on the left side of the window
     computerContainer.style.left = x + 'px';
-    keyboardContainer.style.right = x + 'px';
+    keyboardContainer.style.transform = 'translate(' + -x * 0.5 + 'px, 0px) scale(' + scale + ')';
 }
 
 const tabletParallaxAnimation = (scrollDistance) => {
-    const scrollDifference = scrollDistance - workclassBreakpoint;
-    const y = scrollDifference * 0.2 - 0.25 * viewportHeight;
+    const scrollDifference = scrollDistance - workclassBreakpoint + 0.5 * viewportHeight;
+    let y;
+    if (isDesktop) {
+        y = 0.5 * scrollDifference - 0.3 * viewportHeight;
+    } else if (isTablet) {
+        y = 0.4 * scrollDifference - 0.15 * viewportHeight;
+    } else if (isMobile) {
+        y = 0.4 * scrollDifference - 0.15 * viewportHeight;
+    }
     cardWorkClassTablet.style.transform = 'translate3d(0px, ' + y + 'px, 0px) skew(' + scrollDifference * 0.0075 + 'deg, 0deg)';
 }
 
 const monitorParallaxAnimation = (scrollDistance) => {
-    const scrollDifference = scrollDistance - cvwoBreakpoint;
-    const x = -scrollDifference * 0.125 + 0.15 * viewportHeight;
-    const deg = scrollDifference * 0.02;
+    const scrollDifference = scrollDistance - cvwoBreakpoint + 0.5 * viewportHeight;
+    let x;
+    if (isDesktop) {
+        x = 0.1 * viewportHeight - 0.1 * scrollDifference;
+    } else if (isTablet) {
+        x = 0.1 * viewportHeight - 0.1 * scrollDifference;
+    } else if (isMobile) {
+        x = 0.03 * viewportHeight - 0.033 * scrollDifference;
+    }
 
-    cardCVWOMonitor.style.transform = 'translate3d(' + x + 'px, 0px, 0px) rotate3d(0, 1, 0, ' + deg + 'deg)';
+    cardCVWOMonitor.style.transform = 'translate3d(' + x + 'px, 0px, 0px)';
 }
 
 const serverParallaxAnimation = (scrollDistance) => {
-    const scrollDifference = scrollDistance - foodpandaBreakpoint;
-    const vhToMax = 75;
+    // we want to start increasing the size 60vh before the foodpanda card, reach max size when card in middle of page
+    const scrollDifference = scrollDistance - foodpandaBreakpoint + 0.5 * viewportHeight;
+    const vhToMax = 60;
     const pixelsToMax = vhToMax / 100 * viewportHeight;
-    const scale = Math.min(scrollDifference / pixelsToMax, 1);
+    const scale = Math.min((scrollDifference) / pixelsToMax, 1);
 
     cardFoodpandaServer.style.transform = 'scale(' + scale + ')';
 }
 
 const skillsAnimation = (scrollDistance) => {
-    const scrollDifference = scrollDistance - skillsBreakpoint;
-    const skillsBreakpointGap = 40
+    let skillsBreakpointGap, offset;
+    if (isDesktop) {
+        skillsBreakpointGap = 30;
+        offset = 0.1 * viewportHeight;
+    } else if (isTablet) {
+        skillsBreakpointGap = 30;
+        offset = 0.4 * viewportHeight;
+    } else if (isMobile) {
+        skillsBreakpointGap = 30;
+        offset = 0.4 * viewportHeight;
+    }
+    const scrollDifference = scrollDistance - skillsBreakpoint + offset;
     const languagesBreakpoint = skillsBreakpointGap / 100 * viewportHeight;
     const frameworksBreakpoint = skillsBreakpointGap * 2 / 100 * viewportHeight;
     const toolsBreakpoint = skillsBreakpointGap * 3 / 100 * viewportHeight;
@@ -170,6 +198,8 @@ const skillsAnimation = (scrollDistance) => {
 
 const onUpdate = (evt) => {
     const scrollDistance = window.scrollY;
+    console.log(scrollDistance)
+    console.log(scrollDistance / viewportHeight)
 
     // We want this to always update
     changeNavBarColor(scrollDistance);

@@ -72,13 +72,13 @@ body {
   position: static;
 }
 
-#computer-container {
-  transition: transform 200ms ease-out;
-}
-
+#computer-container,
 #keyboard-container {
   transition: transform 200ms ease-out;
+  transition: left 200ms ease-out;
+  transition: right 200ms ease-out;
 }
+
 
 #profile-asset-container {
   width: 100vw;
@@ -117,6 +117,12 @@ body {
   z-index: 100;
   gap: 5vw;
   color: var(--gradient-7);
+}
+
+@media (max-width: 767px) {
+  #navbar {
+    display: none;
+  }
 }
 
 #navbar p {
