@@ -137,8 +137,6 @@ body {
   width: 50vw;
   display: flex;
   flex-direction: column;
-  left: 0;
-  right: 0;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -191,16 +189,8 @@ body {
   display: flex;
 }
 
-@media (max-width: 767px) {
-  .card {
-    height: 90vh;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .card {
-    height: 40vh;
-  }
+.card-mobile-spacer {
+  display: none;
 }
 
 .card-content {
@@ -232,35 +222,6 @@ body {
   font-weight: 400;
   font-size: 24px;
   margin: 0px;
-}
-
-#skills {
-  gap: 5vh;
-  align-items: center;
-}
-
-#skills-header {
-  margin-bottom: 0;
-}
-
-.skills-card {
-  width: 300px;
-  height: 20vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.skills-card h3 {
-  font-size: 36px;
-  margin: 0;
-}
-
-.skills-card h4 {
-  color: var(--gradient-8);
-  font-weight: 300;
-  margin-top: 10px;
-  margin-bottom: 0;
-  font-size: 20px;
 }
 
 .card-parallax {
@@ -316,6 +277,63 @@ body {
   left: auto;
 }
 
+@media (max-width: 767px) {
+  .card {
+    height: auto;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .card-content {
+    width: 100%;
+    height: auto;
+  }
+
+  .card-content p {
+    font-weight: 400;
+    font-size: 18px;
+    margin: 0px;
+  }
+
+  .card-mobile-spacer {
+    display: block;
+    height: 30vh;
+    width: 100%;
+  }
+
+  .card-parallax {
+    height: 30vh;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #card-cvwo-monitor,
+  #card-foodpanda-server,
+  #card-workclass-tablet {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+  }
+
+  #card-cvwo-monitor img,
+  #card-foodpanda-server img,
+  #card-workclass-tablet img {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .card {
+    height: 40vh;
+  }
+}
+
 .card-container-footer {
   height: 50vh;
   display: flex;
@@ -346,4 +364,33 @@ body {
 
 .card-contact img {
   width: 50px;
+}
+
+#skills {
+  gap: 5vh;
+  align-items: center;
+}
+
+#skills-header {
+  margin-bottom: 0;
+}
+
+.skills-card {
+  width: 300px;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.skills-card h3 {
+  font-size: 36px;
+  margin: 0;
+}
+
+.skills-card h4 {
+  color: var(--gradient-8);
+  font-weight: 300;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 20px;
 }

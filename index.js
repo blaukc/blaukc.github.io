@@ -35,6 +35,15 @@ const breakpoints = {
     workclass: 370,
     skills: 410,
 }
+const breakpointsMobile = {
+    scrollComputerUp: 50,
+    pause: 75,
+    splitComputer: 175,
+    foodpanda: 280,
+    cvwo: 360,
+    workclass: 440,
+    skills: 510,
+}
 computerSpacer.style.height = breakpoints.splitComputer + 'vh';
 
 // remove these when possible
@@ -141,7 +150,7 @@ const tabletParallaxAnimation = (scrollDistance) => {
     } else if (isTablet) {
         y = 0.4 * scrollDifference - 0.15 * viewportHeight;
     } else if (isMobile) {
-        y = 0.4 * scrollDifference - 0.15 * viewportHeight;
+        y = 0.2 * scrollDifference - 0.1 * viewportHeight;
     }
     cardWorkClassTablet.style.transform = 'translate3d(0px, ' + y + 'px, 0px) skew(' + scrollDifference * 0.0075 + 'deg, 0deg)';
 }
@@ -154,7 +163,7 @@ const monitorParallaxAnimation = (scrollDistance) => {
     } else if (isTablet) {
         x = 0.1 * viewportHeight - 0.1 * scrollDifference;
     } else if (isMobile) {
-        x = 0.03 * viewportHeight - 0.033 * scrollDifference;
+        x = 0.1 * viewportHeight - 0.15 * scrollDifference;
     }
 
     cardCVWOMonitor.style.transform = 'translate3d(' + x + 'px, 0px, 0px)';
@@ -224,16 +233,26 @@ const onUpdate = (evt) => {
 const updateState = (evt) => {
     viewportWidth = window.innerWidth;
     viewportHeight = window.innerHeight;
-    scrollComputerUpBreakpoint = breakpoints.scrollComputerUp / 100 * viewportHeight;
-    pauseComputerBreakpoint = breakpoints.pause / 100 * viewportHeight;
-    splitComputerBreakpoint = breakpoints.splitComputer / 100 * viewportHeight;
-    foodpandaBreakpoint = breakpoints.foodpanda / 100 * viewportHeight;
-    cvwoBreakpoint = breakpoints.cvwo / 100 * viewportHeight;
-    workclassBreakpoint = breakpoints.workclass / 100 * viewportHeight;
-    skillsBreakpoint = breakpoints.skills / 100 * viewportHeight;
     isMobile = viewportWidth < 768;
     isTablet = viewportWidth >= 768 && viewportWidth < 1024;
     isDesktop = viewportWidth >= 1024;
+    if (isMobile) {
+        scrollComputerUpBreakpoint = breakpointsMobile.scrollComputerUp / 100 * viewportHeight;
+        pauseComputerBreakpoint = breakpointsMobile.pause / 100 * viewportHeight;
+        splitComputerBreakpoint = breakpointsMobile.splitComputer / 100 * viewportHeight;
+        foodpandaBreakpoint = breakpointsMobile.foodpanda / 100 * viewportHeight;
+        cvwoBreakpoint = breakpointsMobile.cvwo / 100 * viewportHeight;
+        workclassBreakpoint = breakpointsMobile.workclass / 100 * viewportHeight;
+        skillsBreakpoint = breakpointsMobile.skills / 100 * viewportHeight;
+    } else {
+        scrollComputerUpBreakpoint = breakpoints.scrollComputerUp / 100 * viewportHeight;
+        pauseComputerBreakpoint = breakpoints.pause / 100 * viewportHeight;
+        splitComputerBreakpoint = breakpoints.splitComputer / 100 * viewportHeight;
+        foodpandaBreakpoint = breakpoints.foodpanda / 100 * viewportHeight;
+        cvwoBreakpoint = breakpoints.cvwo / 100 * viewportHeight;
+        workclassBreakpoint = breakpoints.workclass / 100 * viewportHeight;
+        skillsBreakpoint = breakpoints.skills / 100 * viewportHeight;
+    }
     onUpdate(null);
 }
 
