@@ -6,7 +6,7 @@ body {
 }
 
 #app-wrapper {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .profile-assets {
