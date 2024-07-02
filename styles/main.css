@@ -1,9 +1,12 @@
 body {
   background-color: var(--gradient-1);
-  overflow-x: hidden;
   margin: 0;
   display: block;
   font-family: NeueKabel;
+}
+
+#app-wrapper {
+  overflow-x: hidden;
 }
 
 .profile-assets {

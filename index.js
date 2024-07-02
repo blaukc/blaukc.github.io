@@ -104,6 +104,7 @@ const pauseComputer = (scrollDistance, x, scale) => {
     computerContainer.style.top = -20 + 'vh';
     keyboardContainer.style.top = -20 + 'vh';
     computerContainer.style.left = x + 'px';
+    // computerContainer.style.transform = 'translate(' + x * 0.5 + 'px, 0px) scale(' + scale + ')';
     keyboardContainer.style.transform = 'translate(' + -x * 0.5 + 'px, 0px) scale(' + scale + ')';
 }
 
@@ -139,6 +140,7 @@ const splitComputer = (scrollDistance) => {
     // if we shift computer using transform, it messes up the z-index positioning
     // if we shift keyboard using left/right it cant overflow on the left side of the window
     computerContainer.style.left = x + 'px';
+    // computerContainer.style.transform = 'translate(' + x * 0.5 + 'px, 0px) scale(' + scale + ')';
     keyboardContainer.style.transform = 'translate(' + -x * 0.5 + 'px, 0px) scale(' + scale + ')';
 }
 
